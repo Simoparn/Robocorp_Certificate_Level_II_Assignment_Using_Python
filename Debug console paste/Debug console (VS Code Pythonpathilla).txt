@@ -1,0 +1,46 @@
+[ ERROR ] Error in file 'c:\Users\simo.parnanen\Desktop\Robocorp_Certificate_Level_II_Assignment_Using_Python\Robocorp_Certificate_Level_II_Assignment_Using_Python-main\tasks.robot' on line 17: Importing library 'RPA.Secrets.Vault' failed: ModuleNotFoundError: No module named 'RPA.Secrets'
+Traceback (most recent call last):
+  None
+PYTHONPATH:
+  c:\Users\simo.parnanen\Desktop\Robocorp_Certificate_Level_II_Assignment_Using_Python\Robocorp_Certificate_Level_II_Assignment_Using_Python-main
+  c:\Users\simo.parnanen\.vscode\extensions\robocorp.robotframework-lsp-0.22.0\src\robotframework_debug_adapter
+  c:\Users\simo.parnanen\Robots\Robocorp_Certificate_Level_II_Assignment-main
+  c:\Users\simo.parnanen\.vscode\extensions\robocorp.robotframework-lsp-0.22.0\src
+  c:\Users\simo.parnanen\.vscode\extensions\robocorp.robotframework-lsp-0.22.0\src\robotframework_ls\vendored
+  C:\Users\simo.parnanen\AppData\Local\robocorp\holotree\b1f3c244e_1c0bc041\python37.zip
+  C:\Users\simo.parnanen\AppData\Local\robocorp\holotree\b1f3c244e_1c0bc041\DLLs
+  C:\Users\simo.parnanen\AppData\Local\robocorp\holotree\b1f3c244e_1c0bc041\lib
+  C:\Users\simo.parnanen\AppData\Local\robocorp\holotree\b1f3c244e_1c0bc041
+  C:\Users\simo.parnanen\AppData\Local\robocorp\holotree\b1f3c244e_1c0bc041\lib\site-packages
+  C:\Users\simo.parnanen\AppData\Local\robocorp\holotree\b1f3c244e_1c0bc041\lib\site-packages\win32
+  C:\Users\simo.parnanen\AppData\Local\robocorp\holotree\b1f3c244e_1c0bc041\lib\site-packages\win32\lib
+  C:\Users\simo.parnanen\AppData\Local\robocorp\holotree\b1f3c244e_1c0bc041\lib\site-packages\Pythonwin
+[ ERROR ] Error in file 'c:\Users\simo.parnanen\Desktop\Robocorp_Certificate_Level_II_Assignment_Using_Python\Robocorp_Certificate_Level_II_Assignment_Using_Python-main\tasks.robot' on line 19: Importing library 'keywordsinpython' failed: ModuleNotFoundError: No module named 'keywordsinpython'
+Traceback (most recent call last):
+  None
+PYTHONPATH:
+  c:\Users\simo.parnanen\Desktop\Robocorp_Certificate_Level_II_Assignment_Using_Python\Robocorp_Certificate_Level_II_Assignment_Using_Python-main
+  c:\Users\simo.parnanen\.vscode\extensions\robocorp.robotframework-lsp-0.22.0\src\robotframework_debug_adapter
+  c:\Users\simo.parnanen\Robots\Robocorp_Certificate_Level_II_Assignment-main
+  c:\Users\simo.parnanen\.vscode\extensions\robocorp.robotframework-lsp-0.22.0\src
+  c:\Users\simo.parnanen\.vscode\extensions\robocorp.robotframework-lsp-0.22.0\src\robotframework_ls\vendored
+  C:\Users\simo.parnanen\AppData\Local\robocorp\holotree\b1f3c244e_1c0bc041\python37.zip
+  C:\Users\simo.parnanen\AppData\Local\robocorp\holotree\b1f3c244e_1c0bc041\DLLs
+  C:\Users\simo.parnanen\AppData\Local\robocorp\holotree\b1f3c244e_1c0bc041\lib
+  C:\Users\simo.parnanen\AppData\Local\robocorp\holotree\b1f3c244e_1c0bc041
+  C:\Users\simo.parnanen\AppData\Local\robocorp\holotree\b1f3c244e_1c0bc041\lib\site-packages
+  C:\Users\simo.parnanen\AppData\Local\robocorp\holotree\b1f3c244e_1c0bc041\lib\site-packages\win32
+  C:\Users\simo.parnanen\AppData\Local\robocorp\holotree\b1f3c244e_1c0bc041\lib\site-packages\win32\lib
+  C:\Users\simo.parnanen\AppData\Local\robocorp\holotree\b1f3c244e_1c0bc041\lib\site-packages\Pythonwin
+==============================================================================
+Tasks :: Certificate level II, Simo P?rn?nen (using Python). Saves the orde...
+==============================================================================
+Insert The Order Data And Save Receipts As PDF With Embedded Scree... | FAIL |
+No keyword with name 'Ask For The Orders Download Link' found.
+------------------------------------------------------------------------------
+Tasks :: Certificate level II, Simo P?rn?nen (using Python). Saves... | FAIL |
+1 task, 0 passed, 1 failed
+==============================================================================
+Output:  c:\Users\simo.parnanen\Desktop\Robocorp_Certificate_Level_II_Assignment_Using_Python\Robocorp_Certificate_Level_II_Assignment_Using_Python-main\output.xml
+Log:     c:\Users\simo.parnanen\Desktop\Robocorp_Certificate_Level_II_Assignment_Using_Python\Robocorp_Certificate_Level_II_Assignment_Using_Python-main\log.html
+Report:  c:\Users\simo.parnanen\Desktop\Robocorp_Certificate_Level_II_Assignment_Using_Python\Robocorp_Certificate_Level_II_Assignment_Using_Python-main\report.html
