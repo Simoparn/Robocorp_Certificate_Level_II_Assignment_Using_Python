@@ -8,6 +8,10 @@ TABLE OF CONTENTS
 
     ABOUT COMMITS
 
+    TODO
+
+    BUGS
+
     ISSUES
         POSSIBLE ISSUES WITH RPA AND SELENIUMLIBRARY LIBRARIES
 
@@ -36,9 +40,17 @@ ABOUT COMMITS
     First commit is wrongly labeled as the 9th, because of faulty commit message
     from the previous repository.
 
+
+TODO
+    End Log still lacks implementation in Keywordsinpython.py
+
+BUGS
+    (10/09/2021) Wrong number of paramters for Order Robots From RobotSpareBin Industries Industries Inc?
+                   
+
 ISSUES
 
-    POSSIBLE ISSUES WITH RPA AND SELENIUMLIBRARY LIBRARIES
-        If the Python interpreter can't resolve the RPA and SELENIUMLIBRARY library in 
+    POSSIBLE ISSUES WITH RPA AND SELENIUM LIBRARIES
+        If the Python interpreter can't resolve the RPA and SELENIUM library in 
         keywordsinpython.py, I recommend copying the library folder to the Lib\site-packages folder of your 
         interpreter and reloading.   

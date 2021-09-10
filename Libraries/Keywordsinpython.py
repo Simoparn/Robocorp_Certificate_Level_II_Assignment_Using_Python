@@ -9,7 +9,9 @@ from RPA.PDF import DocumentKeywords
 from RPA.Archive import Archive
 from RPA.Excel.Files import Files
 from RPA.Tables import Tables
-
+import json
+#TODO: Logging library?
+#from robot.output import logger
 #Vault libraries
 #from Robocloud import Secrets
 #from RPA.Secrets import Vault
@@ -23,7 +25,7 @@ class Keywordsinpython:
     def ask_for_the_orders_download_link(self):
         dialog=Dialogs()
         #Add heading  (self, heading: str, size: Size = Size.Medium,)
-        dialog.add_heading("Robocop Certificate II using Python, Simo P.")    
+        dialog.add_heading("Robocorp Certificate II using Python, Simo P.")    
         #Add input      (self, name: str, label: Optional[str] = None, placeholder: Optional[str] = None, rows: Optional[int] = None,)
         dialog.add_text_input("Url")
         #Add submit buttons
@@ -35,8 +37,10 @@ class Keywordsinpython:
     #@keyword("Download The Orders File")
     def download_the_orders_file(self, url):
         request=HTTP()
-        orders=request.download(url, overwrite=True)
-        return orders
+        orders=request.download(url, target_file="orders.csv", overwrite=True)
+        filereader=Files()
+        ordersfile=filereader.open_workbook("orders.csv")
+        return ordersfile
 
     #@keyword("Open The RobotSpareBin Order Website")
     def open_the_robotSpareBin_order_website(self):
@@ -76,17 +80,20 @@ class Keywordsinpython:
     
     #@keyword("Order Robots From RobotSpareBin Industries Inc")
     def order_robots_from_robotsparebin_industries_inc(self, csv_orders):
-        selector=Selenium()
-        #TODO: Files() not needed for reading the data from CSV?
-        #ordersastable = ordersfile.read_worksheet_as_table(csv_orders)
+        selector=Selenium() 
+        #Not needed? filereader=Files()
+        tablereader=Tables()
         
-        ordersastable=Tables()
-        orders=ordersastable.read_table_from_csv(csv_orders, header=True)
-        ordersastable.filter_empty_rows(orders)
+    
+        #ordersastable = filereader.read_worksheet_as_table(csv_orders)
+    
+        orders=tablereader.read_table_from_csv(csv_orders, header=True)
+        #ordersastable.filter_empty_rows(orders)
        
         
-        for order in ordersastable:
-           
+        for order in orders:
+     
+         if not (order == None):  
             order = {
                 "ordernumber": order["Order number"],
                 "head": int(order["Head"]),
@@ -102,7 +109,7 @@ class Keywordsinpython:
             
     
     #@keyword("Save Receipt As PDF")
-    def save_receipt_as_PDF(order):
+    def save_receipt_as_PDF(self, order):
         selector=Selenium()
         receiptfile=DocumentKeywords()
         selector.wait_until_element_is_visible("receipt")
@@ -121,8 +128,9 @@ class Keywordsinpython:
         
    
     #@keyword("End Log")
-    def end_log(self):
-        return
+    #TODO: Lacks working implementation
+    #def end_log(self):
+    #    return
 
 
 

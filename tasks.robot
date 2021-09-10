@@ -48,55 +48,55 @@ ${GLOBAL_RETRY_INTERVAL}=    0.5s
 #    Wait Until Element Is Visible    class:btn.btn-danger
 #    Click Button   class:btn.btn-danger
 
-Fill The Order For One Person
-    [Arguments]    ${order}
-    ${modalvisible}=   Is Element Visible  class:btn.btn-danger    missing_ok=True
-    Run Keyword If   ${modalvisible}
-    ...    Close The Annoying Modal
-    ${head_as_string}=    Convert To String    ${order}[Head]
-    Select From List By Value    head    ${head_as_string}
-    Select Radio Button   body   ${order}[Body]
-    Input Text    class:form-control   ${order}[Legs]
-    Input Text    address   ${order}[Address]
-    Take Screenshot
-    Click Button    order
-    ${receiptvisible}=   Is Element Visible  receipt    missing_ok=True
-    Run Keyword Unless   ${receiptvisible}    
-    ...    Fill The Order For One Person    ${order}
+#Fill The Order For One Person
+#    [Arguments]    ${order}
+#    ${modalvisible}=   Is Element Visible  class:btn.btn-danger    missing_ok=True
+#    Run Keyword If   ${modalvisible}
+#    ...    Close The Annoying Modal
+#    ${head_as_string}=    Convert To String    ${order}[Head]
+#    Select From List By Value    head    ${head_as_string}
+#    Select Radio Button   body   ${order}[Body]
+#    Input Text    class:form-control   ${order}[Legs]
+#    Input Text    address   ${order}[Address]
+#    Take Screenshot
+#    Click Button    order
+#    ${receiptvisible}=   Is Element Visible  receipt    missing_ok=True
+#    Run Keyword Unless   ${receiptvisible}    
+#    ...    Fill The Order For One Person    ${order}
 
     
 
-Take Screenshot
-    Wait Until Element Is Visible    preview    
-    Click Button    preview
-    Wait Until Element Is Visible    id:robot-preview-image    
-    Screenshot      id:robot-preview-image    ${CURDIR}${/}output${/}currentpicture.png
+#Take Screenshot
+#    Wait Until Element Is Visible    preview    
+#    Click Button    preview
+#    Wait Until Element Is Visible    id:robot-preview-image    
+#    Screenshot      id:robot-preview-image    ${CURDIR}${/}output${/}currentpicture.png
 
-Order Robots From RobotSpareBin Industries Inc
-    ${orders}=    Read table from CSV  orders.csv
-    FOR    ${order}    IN    @{orders}    
-        Fill The Order For One Person    ${order}
-        Save Receipt As PDF    ${order}
-        Wait Until Element Is Visible  id:order-another
-        Click Button  id:order-another
-    END
+#Order Robots From RobotSpareBin Industries Inc
+#    ${orders}=    Read table from CSV  orders.csv
+#    FOR    ${order}    IN    @{orders}    
+#        Fill The Order For One Person    ${order}
+#        Save Receipt As PDF    ${order}
+#        Wait Until Element Is Visible  id:order-another
+#        Click Button  id:order-another
+#    END
 
-Save Receipt As PDF
-    [Arguments]    ${order}
-    Wait Until Element Is Visible    receipt
-    ${order_receipt_html}=    Get Element Attribute    id:receipt    outerHTML
-    Html To Pdf    ${order_receipt_html}    ${CURDIR}${/}output${/}receipts${/}order_${order}[Order number]_receipt.pdf
-    Embed The Robot Screenshot To the Receipt PDF File    ${order}
+#Save Receipt As PDF
+#    [Arguments]    ${order}
+#    Wait Until Element Is Visible    receipt
+#    ${order_receipt_html}=    Get Element Attribute    id:receipt    outerHTML
+#    Html To Pdf    ${order_receipt_html}    ${CURDIR}${/}output${/}receipts${/}order_${order}[Order number]_receipt.pdf
+#    Embed The Robot Screenshot To the Receipt PDF File    ${order}
 
     
 
-Embed The Robot Screenshot To the Receipt PDF File
-    [Arguments]    ${order}  
-    Open PDF    ${CURDIR}${/}output${/}receipts${/}order_${order}[Order number]_receipt.pdf
-    Add Watermark Image To Pdf        
-    ...    image_path=${CURDIR}${/}output${/}currentpicture.png
-    ...    output_path=${CURDIR}${/}output${/}receipts${/}order_${order}[Order number]_receipt.pdf
-    Close PDF  ${CURDIR}${/}output${/}receipts${/}order_${order}[Order number]_receipt.pdf
+#Embed The Robot Screenshot To the Receipt PDF File
+ #   [Arguments]    ${order}  
+  #  Open PDF    ${CURDIR}${/}output${/}receipts${/}order_${order}[Order number]_receipt.pdf
+   # Add Watermark Image To Pdf        
+    #...    image_path=${CURDIR}${/}output${/}currentpicture.png
+    #...    output_path=${CURDIR}${/}output${/}receipts${/}order_${order}[Order number]_receipt.pdf
+    #Close PDF  ${CURDIR}${/}output${/}receipts${/}order_${order}[Order number]_receipt.pdf
 
 End Log
         Log  Done.    
@@ -109,13 +109,13 @@ Insert The Order Data And Save Receipts As PDF With Embedded Screenshots And Zip
     ${url}=    Ask For The Orders Download Link
     Convert To String    ${url}
     ${orders}=    Download The Orders File    ${url}
-    #TODO: TÄSSÄ MENNÄÄN
     Open The RobotSpareBin Order Website        
     Close The Annoying Modal 
     Order Robots From RobotSpareBin Industries Inc    ${orders}
     Archive Folder With Zip    ${CURDIR}${/}output${/}receipts    ${CURDIR}${/}output${/}receipts.zip
     #${secret}=  Get Secret    vaultinfo
-    Log To Console    ${secret}[vaultinfotitle]
-    Log To Console    ${secret}[vaultinfofull]  
+    #Log To Console    ${secret}[vaultinfotitle]
+    #Log To Console    ${secret}[vaultinfofull]  
     Close Browser
+    #TODO: End Log keyword still missing implementation
     [Teardown]    End Log
