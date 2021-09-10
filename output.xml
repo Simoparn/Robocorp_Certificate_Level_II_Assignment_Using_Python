@@ -1,30 +1,35 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<robot generator="Robot 4.1 (Python 3.7.5 on win32)" generated="20210910 15:13:55.702" rpa="true" schemaversion="2">
+<robot generator="Robot 4.1 (Python 3.7.5 on win32)" generated="20210910 18:09:08.695" rpa="true" schemaversion="2">
 <suite id="s1" name="Tasks" source="c:\Users\simo.parnanen\Desktop\RPA-repot\Robocorp_Certificate_Level_II_Assignment_Using_Python\tasks.robot">
 <test id="s1-t1" name="Insert The Order Data And Save Receipts As PDF With Embedded Screenshots And Zip">
 <kw name="Ask For The Orders Download Link" library="Keywordsinpython">
 <var>${url}</var>
-<msg timestamp="20210910 15:14:01.771" level="INFO">${url} = https://robotsparebinindustries.com/orders.csv</msg>
-<status status="PASS" starttime="20210910 15:13:58.409" endtime="20210910 15:14:01.772"/>
+<msg timestamp="20210910 18:09:17.296" level="INFO">${url} = https://robotsparebinindustries.com/orders.csv</msg>
+<status status="PASS" starttime="20210910 18:09:13.026" endtime="20210910 18:09:17.297"/>
 </kw>
 <kw name="Convert To String" library="BuiltIn">
 <arg>${url}</arg>
 <doc>Converts the given item to a Unicode string.</doc>
-<status status="PASS" starttime="20210910 15:14:01.774" endtime="20210910 15:14:01.776"/>
+<status status="PASS" starttime="20210910 18:09:17.303" endtime="20210910 18:09:17.309"/>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<arg>${url}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20210910 18:09:17.312" endtime="20210910 18:09:17.315"/>
 </kw>
 <kw name="Download The Orders File" library="Keywordsinpython">
 <var>${orders}</var>
 <arg>${url}</arg>
-<msg timestamp="20210910 15:14:01.781" level="INFO">Creating a new HTTP session</msg>
-<msg timestamp="20210910 15:14:01.781" level="INFO">Creating Session using : alias=rpasession_alias.httpsrobotsparebinindustries.com, url=https://robotsparebinindustries.com, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=True,                     debug=0 </msg>
-<msg timestamp="20210910 15:14:02.130" level="INFO">GET Request : url=https://robotsparebinindustries.com/orders.csv 
+<msg timestamp="20210910 18:09:17.320" level="INFO">Creating a new HTTP session</msg>
+<msg timestamp="20210910 18:09:17.320" level="INFO">Creating Session using : alias=rpasession_alias.httpsrobotsparebinindustries.com, url=https://robotsparebinindustries.com, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=True,                     debug=0 </msg>
+<msg timestamp="20210910 18:09:17.528" level="INFO">GET Request : url=https://robotsparebinindustries.com/orders.csv 
  path_url=/orders.csv 
  headers={'User-Agent': 'python-requests/2.26.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive'} 
  body=None 
  </msg>
-<msg timestamp="20210910 15:14:02.131" level="INFO">GET Response : url=https://robotsparebinindustries.com/orders.csv 
+<msg timestamp="20210910 18:09:17.528" level="INFO">GET Response : url=https://robotsparebinindustries.com/orders.csv 
  status=200, reason=OK 
- headers={'Connection': 'keep-alive', 'Content-Length': '199', 'Server': 'GitHub.com', 'Content-Type': 'text/csv; charset=utf-8', 'Strict-Transport-Security': 'max-age=31556952', 'Last-Modified': 'Fri, 13 Aug 2021 11:27:04 GMT', 'Access-Control-Allow-Origin': '*', 'ETag': 'W/"61165708-19c"', 'expires': 'Fri, 10 Sep 2021 10:39:54 GMT', 'Cache-Control': 'max-age=600', 'Content-Encoding': 'gzip', 'x-proxy-cache': 'MISS', 'X-GitHub-Request-Id': 'A2B6:683B:234D85:27252A:613B33A2', 'Accept-Ranges': 'bytes', 'Date': 'Fri, 10 Sep 2021 12:14:02 GMT', 'Via': '1.1 varnish', 'Age': '0', 'X-Served-By': 'cache-bma1639-BMA', 'X-Cache': 'HIT', 'X-Cache-Hits': '1', 'X-Timer': 'S1631276042.011864,VS0,VE115', 'Vary': 'Accept-Encoding', 'X-Fastly-Request-ID': 'd9fe24d2a2be9759e6e95eaf8604aef720c644d2'} 
+ headers={'Connection': 'keep-alive', 'Content-Length': '199', 'Server': 'GitHub.com', 'Content-Type': 'text/csv; charset=utf-8', 'Strict-Transport-Security': 'max-age=31556952', 'Last-Modified': 'Fri, 13 Aug 2021 11:27:04 GMT', 'Access-Control-Allow-Origin': '*', 'ETag': 'W/"61165708-19c"', 'expires': 'Fri, 10 Sep 2021 14:35:35 GMT', 'Cache-Control': 'max-age=600', 'Content-Encoding': 'gzip', 'x-proxy-cache': 'MISS', 'X-GitHub-Request-Id': '84B8:348E:64682B:673DDF:613B6ADF', 'Accept-Ranges': 'bytes', 'Date': 'Fri, 10 Sep 2021 15:09:17 GMT', 'Via': '1.1 varnish', 'Age': '348', 'X-Served-By': 'cache-bma1661-BMA', 'X-Cache': 'HIT', 'X-Cache-Hits': '1', 'X-Timer': 'S1631286558.518281,VS0,VE1', 'Vary': 'Accept-Encoding', 'X-Fastly-Request-ID': '2c4c748fc4d8b47bd8e807b9489b103092aefc1e'} 
  body=Order number,Head,Body,Legs,Address
 1,1,2,3,Address 123
 2,4,1,5,Address 456
@@ -47,47 +52,47 @@
 19,4,6,2,Address G
 20,1,1,5,Address H 
  </msg>
-<msg timestamp="20210910 15:14:02.135" level="INFO">Failed to open as Excel Binary Format (.xls): Unsupported format, or corrupt file: Expected BOF record; found b'Order nu'</msg>
-<msg timestamp="20210910 15:14:02.138" level="FAIL">ValueError: Failed to open Excel file (C:\Users\simo.parnanen\Desktop\RPA-repot\Robocorp_Certificate_Level_II_Assignment_Using_Python\orders.csv), verify that the path and extension are correct</msg>
-<status status="FAIL" starttime="20210910 15:14:01.778" endtime="20210910 15:14:02.138"/>
+<msg timestamp="20210910 18:09:17.538" level="INFO">Failed to open as Excel Binary Format (.xls): Unsupported format, or corrupt file: Expected BOF record; found b'Order nu'</msg>
+<msg timestamp="20210910 18:09:17.538" level="FAIL">ValueError: Failed to open Excel file (C:\Users\simo.parnanen\Desktop\RPA-repot\Robocorp_Certificate_Level_II_Assignment_Using_Python\orders.csv), verify that the path and extension are correct</msg>
+<status status="FAIL" starttime="20210910 18:09:17.317" endtime="20210910 18:09:17.538"/>
 </kw>
 <kw name="Open The RobotSpareBin Order Website" library="Keywordsinpython">
-<status status="NOT RUN" starttime="20210910 15:14:02.140" endtime="20210910 15:14:02.141"/>
+<status status="NOT RUN" starttime="20210910 18:09:17.556" endtime="20210910 18:09:17.558"/>
 </kw>
 <kw name="Close The Annoying Modal" library="Keywordsinpython">
-<status status="NOT RUN" starttime="20210910 15:14:02.142" endtime="20210910 15:14:02.143"/>
+<status status="NOT RUN" starttime="20210910 18:09:17.560" endtime="20210910 18:09:17.562"/>
 </kw>
 <kw name="Order Robots From Robotsparebin Industries Inc" library="Keywordsinpython">
 <arg>${orders}</arg>
-<status status="NOT RUN" starttime="20210910 15:14:02.144" endtime="20210910 15:14:02.145"/>
+<status status="NOT RUN" starttime="20210910 18:09:17.565" endtime="20210910 18:09:17.567"/>
 </kw>
 <kw name="Archive Folder With Zip" library="RPA.Archive">
 <arg>c:\\Users\\simo.parnanen\\Desktop\\RPA-repot\\Robocorp_Certificate_Level_II_Assignment_Using_Python${/}output${/}receipts</arg>
 <arg>c:\\Users\\simo.parnanen\\Desktop\\RPA-repot\\Robocorp_Certificate_Level_II_Assignment_Using_Python${/}output${/}receipts.zip</arg>
 <doc>Create a zip archive of a folder</doc>
-<status status="NOT RUN" starttime="20210910 15:14:02.146" endtime="20210910 15:14:02.147"/>
+<status status="NOT RUN" starttime="20210910 18:09:17.570" endtime="20210910 18:09:17.572"/>
 </kw>
 <kw name="Close Browser" library="RPA.Browser.Selenium">
 <doc>Closes the current browser.</doc>
-<status status="NOT RUN" starttime="20210910 15:14:02.148" endtime="20210910 15:14:02.148"/>
+<status status="NOT RUN" starttime="20210910 18:09:17.575" endtime="20210910 18:09:17.577"/>
 </kw>
 <kw name="End Log" type="TEARDOWN">
 <kw name="Log" library="BuiltIn">
 <arg>Done.</arg>
 <doc>Logs the given message with the given level.</doc>
-<msg timestamp="20210910 15:14:02.154" level="INFO">Done.</msg>
-<status status="PASS" starttime="20210910 15:14:02.153" endtime="20210910 15:14:02.154"/>
+<msg timestamp="20210910 18:09:17.589" level="INFO">Done.</msg>
+<status status="PASS" starttime="20210910 18:09:17.586" endtime="20210910 18:09:17.589"/>
 </kw>
-<status status="PASS" starttime="20210910 15:14:02.151" endtime="20210910 15:14:02.155"/>
+<status status="PASS" starttime="20210910 18:09:17.582" endtime="20210910 18:09:17.591"/>
 </kw>
-<status status="FAIL" starttime="20210910 15:13:58.403" endtime="20210910 15:14:02.156">ValueError: Failed to open Excel file (C:\Users\simo.parnanen\Desktop\RPA-repot\Robocorp_Certificate_Level_II_Assignment_Using_Python\orders.csv), verify that the path and extension are correct</status>
+<status status="FAIL" starttime="20210910 18:09:13.016" endtime="20210910 18:09:17.593">ValueError: Failed to open Excel file (C:\Users\simo.parnanen\Desktop\RPA-repot\Robocorp_Certificate_Level_II_Assignment_Using_Python\orders.csv), verify that the path and extension are correct</status>
 </test>
 <doc>Certificate level II, Simo Pärnänen (using Python).
 Saves the order HTML receipt as a PDF file.
 Saves the screenshot of the ordered robot.
 Embeds the screenshot of the robot to the PDF receipt.
 Creates ZIP archive of the receipts and the images.</doc>
-<status status="FAIL" starttime="20210910 15:13:55.710" endtime="20210910 15:14:02.159"/>
+<status status="FAIL" starttime="20210910 18:09:08.711" endtime="20210910 18:09:17.599"/>
 </suite>
 <statistics>
 <total>

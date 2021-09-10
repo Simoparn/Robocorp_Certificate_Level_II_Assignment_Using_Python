@@ -108,6 +108,7 @@ Insert The Order Data And Save Receipts As PDF With Embedded Screenshots And Zip
 #Orders file: https://robotsparebinindustries.com/orders.csv
     ${url}=    Ask For The Orders Download Link
     Convert To String    ${url}
+    Log To Console     ${url}
     ${orders}=    Download The Orders File    ${url}
     Open The RobotSpareBin Order Website        
     Close The Annoying Modal 

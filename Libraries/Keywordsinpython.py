@@ -9,7 +9,7 @@ from RPA.PDF import DocumentKeywords
 from RPA.Archive import Archive
 from RPA.Excel.Files import Files
 from RPA.Tables import Tables
-import json
+
 #TODO: Logging library?
 #from robot.output import logger
 #Vault libraries
@@ -35,11 +35,16 @@ class Keywordsinpython:
         return inputlink["Url"]
 
     #@keyword("Download The Orders File")
-    def download_the_orders_file(self, url):
+    def download_the_orders_file(self, url):    
+        
         request=HTTP()
+        
         orders=request.download(url, target_file="orders.csv", overwrite=True)
         filereader=Files()
-        ordersfile=filereader.open_workbook("orders.csv")
+        tablereader=Tables()
+        #TODO: error, file format not supported or corrupted file
+        ordersfile=filereader.open_workbook("./orders.csv")
+        
         return ordersfile
 
     #@keyword("Open The RobotSpareBin Order Website")
@@ -87,20 +92,21 @@ class Keywordsinpython:
     
         #ordersastable = filereader.read_worksheet_as_table(csv_orders)
     
-        orders=tablereader.read_table_from_csv(csv_orders, header=True)
+        orders=tablereader.read_table_from_csv("csv_orders", header=True)
         #ordersastable.filter_empty_rows(orders)
        
         
         for order in orders:
      
-         if not (order == None):  
-            order = {
-                "ordernumber": order["Order number"],
-                "head": int(order["Head"]),
-                "body": int(order["Body"]),
-                "legs": int(order["Legs"]),
-                "address": order["Address"]
-            }
+         if(order):  
+            #TODO: NOT NEEDED
+            #order = {
+            #    "ordernumber": order["Order number"],
+            #    "head": int(order["Head"]),
+            #    "body": int(order["Body"]),
+            #    "legs": int(order["Legs"]),
+            #    "address": order["Address"]
+            #}
             self.fill_the_order_for_one_person(order)
             self.save_receipt_as_PDF(order)
             selector.wait_until_element_is_visible("id:order-another")
