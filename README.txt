@@ -33,7 +33,7 @@ INSTRUCTIONS
 
 
 ABOUT COMMITS
-    Commits are labeled starting from 9, because of faulty commit message
+    First commit is wrongly labeled as the 9th, because of faulty commit message
     from the previous repository.
 
 ISSUES
