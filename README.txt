@@ -4,6 +4,8 @@ TABLE OF CONTENTS
 
     INSTRUCTIONS
         CHECK PACKAGES IN VISUAL STUDIO CODE
+        CONFIGURE CREDENTIALS (USERNAME AND PASSWORD)
+        DEFAULT USERNAME AND PASSWORD
         DOWNLOAD LINK FOR THE ORDERS FILE
 
     ABOUT COMMITS
@@ -18,8 +20,8 @@ TABLE OF CONTENTS
 
 OVERVIEW
    
-    Certificate level II, Simo Pärnänen (using Python to implement RPA Framework keywords). 
-    Saves the order HTML receipt as a PDF file. Saves the screenshot of the ordered robot.
+    Certificate level II, Simo Pärnänen (using Python to implement RPA Framework keywords),
+    with an additional request for username and password credentials.  Saves the order HTML receipt as a PDF file. Saves the screenshot of the ordered robot.
     Embeds the screenshot of the robot to the PDF receipt. Creates ZIP archive of the
     receipts and the images.
 
@@ -31,7 +33,15 @@ INSTRUCTIONS
     CHECK PACKAGES IN VISUAL STUDIO CODE  
         Terminal->py -m pip list
 
+    CONFIGURE CREDENTIALS (USERNAME AND PASSWORD)
+        The vault.json file should be moved to root of the repository directory,
+        Change the value of the RPA_SECRET_FILE attribute in devdata/env.json
+        to ../vault.json for example. Change the username and password in vault.json.
 
+
+
+    DEFAULT USERNAME AND PASSWORD
+        Username: "username", Password: "password"
     DOWNLOAD LINK FOR THE ORDERS FILE
         Orders file: https://robotsparebinindustries.com/orders.csv
 

@@ -13,8 +13,7 @@ from RPA.Tables import Tables
 #TODO: Logging library?
 #from robot.output import logger
 #Vault libraries
-#from Robocloud import Secrets
-#from RPA.Secrets import Vault
+from RPA.Robocloud import Secrets
 
 browser=Selenium()
 
@@ -22,17 +21,37 @@ browser=Selenium()
 
 class Keywordsinpython:
     
-    def ask_for_the_orders_download_link(self):
+
+    def get_secret_credentials(self):
+        secretmanager=Secrets.FileSecrets() 
+        secrets=secretmanager.get_secret("credentials")
+        getcredentials=[]
+        getcredentials.append(secrets["username"])
+        getcredentials.append(secrets["password"])
+        return getcredentials
+
+
+
+    def ask_for_credentials_and_the_orders_download_link(self, credentials):
         dialog=Dialogs()
-        #Add heading  (self, heading: str, size: Size = Size.Medium,)
-        dialog.add_heading("Robocorp Certificate II using Python, Simo P.")    
-        #Add input      (self, name: str, label: Optional[str] = None, placeholder: Optional[str] = None, rows: Optional[int] = None,)
-        dialog.add_text_input("Url")
-        #Add submit buttons
-        dialog.add_submit_buttons("Press here to download the orders file")
-        #Run the dialog (self, timeout: int = 180, **options: Any)
-        inputlink= dialog.run_dialog()
-        return inputlink["Url"]
+        rightcredentials=False
+        while not(rightcredentials):
+            #Add heading  (self, heading: str, size: Size = Size.Medium,)
+            dialog.add_heading("Robocorp Certificate II using Python, Simo P.")    
+            #Add input      (self, name: str, label: Optional[str] = None, placeholder: Optional[str] = None, rows: Optional[int] = None,)
+            dialog.add_text_input("Username", "Enter username")
+            dialog.add_text_input("Password", "Enter password")
+            dialog.add_text_input("Url", "Enter the orders URL here")
+            #Add submit buttons
+            dialog.add_submit_buttons("Press here to download the orders file")
+            #Run the dialog (self, timeout: int = 180, **options: Any)
+            inputlinkdialog= dialog.run_dialog()
+            if not(inputlinkdialog["Url"] == credentials["username"] and inputlinkdialog["Url"] == credentials["password"]):
+                rightcredentials=False
+                dialog.add_text("Wrong username or password, try again.")
+            else:
+                rightcredentials=True
+        return inputlinkdialog["Url"]
 
     #@keyword("Download The Orders File")
     def download_the_orders_file(self, url):    
@@ -99,14 +118,8 @@ class Keywordsinpython:
         for order in orders:
      
          if(order):  
-            #TODO: NOT NEEDED
-            #order = {
-            #    "ordernumber": order["Order number"],
-            #    "head": int(order["Head"]),
-            #    "body": int(order["Body"]),
-            #    "legs": int(order["Legs"]),
-            #    "address": order["Address"]
-            #}
+            
+        
             self.fill_the_order_for_one_person(order)
             self.save_receipt_as_PDF(order)
             selector.wait_until_element_is_visible("id:order-another")
@@ -131,6 +144,7 @@ class Keywordsinpython:
         receiptfile.open_pdf("./output/receipts/order_"+order["Order number"]+"_receipt.pdf")
         receiptfile.add_watermark_image_to_pdf(image_path="./output/currentpicture.png",output_path="./output/receipts/order_"+order["Order number"]+"_receipt.pdf")
         receiptfile.close_pdf("./output/receipts/order_"+order["Order number"]+"_receipt.pdf")
+
         
    
     #@keyword("End Log")

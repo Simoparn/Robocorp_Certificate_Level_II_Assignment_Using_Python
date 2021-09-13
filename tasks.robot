@@ -12,9 +12,9 @@ Library         RPA.HTTP
 Library         RPA.PDF
 Library         RPA.Excel.Files
 Library         RPA.Archive
-#Library        RPA.Robocloud.Secrets
+Library         RPA.Robocloud.Secrets
 Library         RPA.Dialogs
-#Library        RPA.Secrets.Vault
+#Library         RPA.Secrets.Vault
 #Own libraries
 Library         Keywordsinpython  
 
@@ -106,15 +106,15 @@ End Log
 *** Tasks ***
 Insert The Order Data And Save Receipts As PDF With Embedded Screenshots And Zip
 #Orders file: https://robotsparebinindustries.com/orders.csv
-    ${url}=    Ask For The Orders Download Link
+    ${credentials}=  Get Secret Credentials    
+    ${url}=    Ask For Credentials And The Orders Download Link    ${credentials}
     Convert To String    ${url}
     Log To Console     ${url}
     ${orders}=    Download The Orders File    ${url}
     Open The RobotSpareBin Order Website        
     Close The Annoying Modal 
     Order Robots From RobotSpareBin Industries Inc    ${orders}
-    Archive Folder With Zip    ${CURDIR}${/}output${/}receipts    ${CURDIR}${/}output${/}receipts.zip
-    #${secret}=  Get Secret    vaultinfo
+    Archive Folder With Zip    ${CURDIR}${/}output${/}receipts    ${CURDIR}${/}output${/}receipts.zip   
     #Log To Console    ${secret}[vaultinfotitle]
     #Log To Console    ${secret}[vaultinfofull]  
     Close Browser
