@@ -14,7 +14,6 @@ Library         RPA.Excel.Files
 Library         RPA.Archive
 Library         RPA.Robocloud.Secrets
 Library         RPA.Dialogs
-#Library         RPA.Secrets.Vault
 #Own libraries
 Library         Keywordsinpython  
 
