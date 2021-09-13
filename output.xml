@@ -1,70 +1,70 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<robot generator="Robot 4.1 (Python 3.7.5 on win32)" generated="20210913 14:20:33.064" rpa="true" schemaversion="2">
+<robot generator="Robot 4.1 (Python 3.7.5 on win32)" generated="20210913 14:39:26.597" rpa="true" schemaversion="2">
 <suite id="s1" name="Tasks" source="c:\Users\simo.parnanen\Desktop\RPA-repot\Robocorp_Certificate_Level_II_Assignment_Using_Python\tasks.robot">
 <test id="s1-t1" name="Insert The Order Data And Save Receipts As PDF With Embedded Screenshots And Zip">
 <kw name="Get Secret Credentials" library="Keywordsinpython">
 <var>${credentials}</var>
-<msg timestamp="20210913 14:20:38.556" level="INFO">${credentials} = ['username', 'password']</msg>
-<status status="PASS" starttime="20210913 14:20:38.547" endtime="20210913 14:20:38.556"/>
+<msg timestamp="20210913 14:39:29.585" level="INFO">${credentials} = ['username', 'password']</msg>
+<status status="PASS" starttime="20210913 14:39:29.582" endtime="20210913 14:39:29.585"/>
 </kw>
 <kw name="Ask For Credentials And The Orders Download Link" library="Keywordsinpython">
 <var>${url}</var>
 <arg>${credentials}</arg>
-<msg timestamp="20210913 14:20:42.180" level="FAIL">Aborted by user</msg>
-<status status="FAIL" starttime="20210913 14:20:38.560" endtime="20210913 14:20:42.182"/>
+<msg timestamp="20210913 14:39:33.623" level="FAIL">Aborted by user</msg>
+<status status="FAIL" starttime="20210913 14:39:29.586" endtime="20210913 14:39:33.624"/>
 </kw>
 <kw name="Convert To String" library="BuiltIn">
 <arg>${url}</arg>
 <doc>Converts the given item to a Unicode string.</doc>
-<status status="NOT RUN" starttime="20210913 14:20:42.189" endtime="20210913 14:20:42.192"/>
+<status status="NOT RUN" starttime="20210913 14:39:33.628" endtime="20210913 14:39:33.629"/>
 </kw>
 <kw name="Log To Console" library="BuiltIn">
 <arg>${url}</arg>
 <doc>Logs the given message to the console.</doc>
-<status status="NOT RUN" starttime="20210913 14:20:42.197" endtime="20210913 14:20:42.201"/>
+<status status="NOT RUN" starttime="20210913 14:39:33.630" endtime="20210913 14:39:33.631"/>
 </kw>
 <kw name="Download The Orders File" library="Keywordsinpython">
 <var>${orders}</var>
 <arg>${url}</arg>
-<status status="NOT RUN" starttime="20210913 14:20:42.205" endtime="20210913 14:20:42.208"/>
+<status status="NOT RUN" starttime="20210913 14:39:33.633" endtime="20210913 14:39:33.635"/>
 </kw>
 <kw name="Open The RobotSpareBin Order Website" library="Keywordsinpython">
-<status status="NOT RUN" starttime="20210913 14:20:42.212" endtime="20210913 14:20:42.215"/>
+<status status="NOT RUN" starttime="20210913 14:39:33.637" endtime="20210913 14:39:33.638"/>
 </kw>
 <kw name="Close The Annoying Modal" library="Keywordsinpython">
-<status status="NOT RUN" starttime="20210913 14:20:42.220" endtime="20210913 14:20:42.222"/>
+<status status="NOT RUN" starttime="20210913 14:39:33.639" endtime="20210913 14:39:33.640"/>
 </kw>
 <kw name="Order Robots From Robotsparebin Industries Inc" library="Keywordsinpython">
 <arg>${orders}</arg>
-<status status="NOT RUN" starttime="20210913 14:20:42.227" endtime="20210913 14:20:42.230"/>
+<status status="NOT RUN" starttime="20210913 14:39:33.641" endtime="20210913 14:39:33.642"/>
 </kw>
 <kw name="Archive Folder With Zip" library="RPA.Archive">
 <arg>c:\\Users\\simo.parnanen\\Desktop\\RPA-repot\\Robocorp_Certificate_Level_II_Assignment_Using_Python${/}output${/}receipts</arg>
 <arg>c:\\Users\\simo.parnanen\\Desktop\\RPA-repot\\Robocorp_Certificate_Level_II_Assignment_Using_Python${/}output${/}receipts.zip</arg>
 <doc>Create a zip archive of a folder</doc>
-<status status="NOT RUN" starttime="20210913 14:20:42.234" endtime="20210913 14:20:42.239"/>
+<status status="NOT RUN" starttime="20210913 14:39:33.643" endtime="20210913 14:39:33.644"/>
 </kw>
 <kw name="Close Browser" library="RPA.Browser.Selenium">
 <doc>Closes the current browser.</doc>
-<status status="NOT RUN" starttime="20210913 14:20:42.244" endtime="20210913 14:20:42.248"/>
+<status status="NOT RUN" starttime="20210913 14:39:33.646" endtime="20210913 14:39:33.646"/>
 </kw>
 <kw name="End Log" type="TEARDOWN">
 <kw name="Log" library="BuiltIn">
 <arg>Done.</arg>
 <doc>Logs the given message with the given level.</doc>
-<msg timestamp="20210913 14:20:42.271" level="INFO">Done.</msg>
-<status status="PASS" starttime="20210913 14:20:42.265" endtime="20210913 14:20:42.273"/>
+<msg timestamp="20210913 14:39:33.654" level="INFO">Done.</msg>
+<status status="PASS" starttime="20210913 14:39:33.651" endtime="20210913 14:39:33.655"/>
 </kw>
-<status status="PASS" starttime="20210913 14:20:42.255" endtime="20210913 14:20:42.279"/>
+<status status="PASS" starttime="20210913 14:39:33.648" endtime="20210913 14:39:33.656"/>
 </kw>
-<status status="FAIL" starttime="20210913 14:20:38.530" endtime="20210913 14:20:42.283">Aborted by user</status>
+<status status="FAIL" starttime="20210913 14:39:29.576" endtime="20210913 14:39:33.657">Aborted by user</status>
 </test>
 <doc>Certificate level II, Simo Pärnänen (using Python).
 Saves the order HTML receipt as a PDF file.
 Saves the screenshot of the ordered robot.
 Embeds the screenshot of the robot to the PDF receipt.
 Creates ZIP archive of the receipts and the images.</doc>
-<status status="FAIL" starttime="20210913 14:20:33.079" endtime="20210913 14:20:42.291"/>
+<status status="FAIL" starttime="20210913 14:39:26.605" endtime="20210913 14:39:33.660"/>
 </suite>
 <statistics>
 <total>

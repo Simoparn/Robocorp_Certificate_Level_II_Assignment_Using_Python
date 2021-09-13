@@ -107,13 +107,15 @@ Insert The Order Data And Save Receipts As PDF With Embedded Screenshots And Zip
 #Orders file: https://robotsparebinindustries.com/orders.csv
     ${credentials}=  Get Secret Credentials    
     ${url}=    Ask For Credentials And The Orders Download Link    ${credentials}
+    #TODO: Convert To String missing implementation (Not needed?)
+    Log To Console    ${url}
     Convert To String    ${url}
-    Log To Console     ${url}
     ${orders}=    Download The Orders File    ${url}
     Open The RobotSpareBin Order Website        
     Close The Annoying Modal 
     Order Robots From RobotSpareBin Industries Inc    ${orders}
+    #TODO: Archive Folder With Zip missing Python implementation (Not needed?)
     Archive Folder With Zip    ${CURDIR}${/}output${/}receipts    ${CURDIR}${/}output${/}receipts.zip    
     Close Browser
-    #TODO: End Log keyword still missing implementation
+    #TODO: End Log Missing Python implementation (Not needed?)
     [Teardown]    End Log

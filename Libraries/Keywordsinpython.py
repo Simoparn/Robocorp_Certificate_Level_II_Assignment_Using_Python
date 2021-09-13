@@ -18,7 +18,7 @@ from RPA.Robocloud import Secrets
 
 browser=Selenium()
 
-#@Keyword definitions should not be needed with robot.yaml -> PYTHONPATH?
+#@Keyword definitions not needed with robot.yaml -> PYTHONPATH configured
 
 class Keywordsinpython:
     
@@ -54,7 +54,7 @@ class Keywordsinpython:
                 rightcredentials=True
         return inputlinkdialog["Url"]
 
-    #@keyword("Download The Orders File")
+    
     def download_the_orders_file(self, url):    
         
         request=HTTP()
@@ -67,16 +67,16 @@ class Keywordsinpython:
         
         return ordersfile
 
-    #@keyword("Open The RobotSpareBin Order Website")
+ 
     def open_the_robotSpareBin_order_website(self):
         url = "https://robotsparebinindustries.com/#/robot-order/"
         browser.open_available_browser(url)
         
-    #@keyword("Close The Annoying Modal")
+    
     def close_the_annoying_modal(self):
         browser.click_element_when_visible("class:btn.btn-danger")
     
-    #@keyword("Fill The Order For One Person")
+    
     def fill_the_order_for_one_person(self, order):
         selector=Selenium()
         
@@ -103,7 +103,7 @@ class Keywordsinpython:
             browser.screenshot("id:robot-preview-image", "./output/currentpicture.png")
                  
     
-    #@keyword("Order Robots From RobotSpareBin Industries Inc")
+    
     def order_robots_from_robotsparebin_industries_inc(self, csv_orders):
         selector=Selenium() 
         #Not needed? filereader=Files()
@@ -128,7 +128,7 @@ class Keywordsinpython:
            
             
     
-    #@keyword("Save Receipt As PDF")
+    
     def save_receipt_as_PDF(self, order):
         selector=Selenium()
         receiptfile=DocumentKeywords()
@@ -139,7 +139,7 @@ class Keywordsinpython:
         self.embed_the_robot_screenshot_to_the_receipt_PDF_file(order)
         
     
-    #@keyword("Embed The Robot Screenshot To The Receipt PDF File")
+    
     def embed_the_robot_screenshot_to_the_receipt_PDF_file(self, order):
         receiptfile=DocumentKeywords()
         receiptfile.open_pdf("./output/receipts/order_"+order["Order number"]+"_receipt.pdf")
@@ -148,10 +148,6 @@ class Keywordsinpython:
 
         
    
-    #@keyword("End Log")
-    #TODO: Lacks working implementation
-    #def end_log(self):
-    #    return
 
 
 
