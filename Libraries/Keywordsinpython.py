@@ -1,5 +1,6 @@
 
 #Browser and UI libraries
+import logging
 from RPA.HTTP import HTTP
 from RPA.Dialogs import Dialogs 
 from RPA.Browser.Selenium import Selenium
@@ -46,7 +47,7 @@ class Keywordsinpython:
             dialog.add_submit_buttons("Press here to download the orders file")
             #Run the dialog (self, timeout: int = 180, **options: Any)
             inputlinkdialog= dialog.run_dialog()
-            if not(inputlinkdialog["Url"] == credentials["username"] and inputlinkdialog["Url"] == credentials["password"]):
+            if not(inputlinkdialog["Username"] == credentials[0] and inputlinkdialog["Password"] == credentials[1]):
                 rightcredentials=False
                 dialog.add_text("Wrong username or password, try again.")
             else:
