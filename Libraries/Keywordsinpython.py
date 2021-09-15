@@ -16,7 +16,7 @@ from RPA.Tables import Tables
 #from robot.output import logger
 #from robot.libraries.BuiltIn import logger
 #Vault libraries
-from RPA.Robocloud import Secrets
+from RPA.Robocorp import Secrets
 
 global_timeout=3
 
@@ -31,10 +31,10 @@ class Keywordsinpython:
 
     def get_secret_credentials(self):
         secretmanager=Secrets.FileSecrets() 
-        secrets=secretmanager.get_secret("credentials")
+        vault=secretmanager.get_secret("username_and_password")
         getcredentials=[]
-        getcredentials.append(secrets["username"])
-        getcredentials.append(secrets["password"])
+        getcredentials.append(vault["username"])
+        getcredentials.append(vault["password"])
         return getcredentials
 
     

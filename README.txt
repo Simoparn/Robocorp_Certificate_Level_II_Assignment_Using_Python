@@ -3,11 +3,16 @@ TABLE OF CONTENTS
     OVERVIEW
 
     INSTRUCTIONS
-        CHECK PACKAGES IN VISUAL STUDIO CODE
-        IF USING ORIGINAL SELENIUM.WEBDRIVER
-        CONFIGURE CREDENTIALS (USERNAME AND PASSWORD)
-        DEFAULT USERNAME AND PASSWORD
-        DOWNLOAD LINK FOR THE ORDERS FILE
+
+        LOCAL USE
+
+            CHECK PACKAGES IN VISUAL STUDIO CODE
+            IF USING ORIGINAL SELENIUM.WEBDRIVER
+            CONFIGURE VAULT CREDENTIALS (USERNAME AND PASSWORD)
+            DEFAULT USERNAME AND PASSWORD
+            DOWNLOAD LINK FOR THE ORDERS FILE
+
+        ROBOCORP CLOUD
 
     ABOUT COMMITS
 
@@ -30,32 +35,50 @@ OVERVIEW
 
 
 INSTRUCTIONS
+
+    LOCAL USE
+
     
-    CHECK PACKAGES IN VISUAL STUDIO CODE  
-        Terminal->py -m pip list
+        CHECK PACKAGES IN VISUAL STUDIO CODE  
+            Terminal->py -m pip list
 
-        Terminal->py -m pip install selenium
+             Terminal->py -m pip install selenium
 
+
+     IF USING ORIGINAL SELENIUM.WEBDRIVER
+
+            Set the driver in your PATH.
+
+            https://sites.google.com/chromium.org/driver/getting-started
+
+
+        CONFIGURE VAULT CREDENTIALS (USERNAME AND PASSWORD)
+            The vault.json file should be moved to root of the repository directory,
+            Change the value of the RPA_SECRET_FILE attribute in devdata/env.json
+            to ../vault.json for example. Change the username and password in vault.json.
         
-    IF USING ORIGINAL SELENIUM.WEBDRIVER
-
-        Set the driver in your PATH.
-
-        https://sites.google.com/chromium.org/driver/getting-started
+            vault.json
 
 
-    CONFIGURE CREDENTIALS (USERNAME AND PASSWORD)
-        The vault.json file should be moved to root of the repository directory,
-        Change the value of the RPA_SECRET_FILE attribute in devdata/env.json
-        to ../vault.json for example. Change the username and password in vault.json.
+            {
+                "credentials": {
+                "username": "username",
+                "password": "password"
+            }
+        }
 
 
+        DEFAULT USERNAME AND PASSWORD
+            Username: "username", Password: "password"
+    
+        DOWNLOAD LINK FOR THE ORDERS FILE
+            Orders file: https://robotsparebinindustries.com/orders.csv
 
-    DEFAULT USERNAME AND PASSWORD
-        Username: "username", Password: "password"
-    DOWNLOAD LINK FOR THE ORDERS FILE
-        Orders file: https://robotsparebinindustries.com/orders.csv
 
+    ROBOCORP CLOUD
+
+        Remove the vault.json from the root directory and change the credentials according
+        to your configured vault settings in Robocorp Cloud.
 
 ABOUT COMMITS
     First commit is wrongly labeled as the 9th, because of faulty commit message

@@ -1,6 +1,6 @@
 {
-  "credentials": {
-    "username": "username",
-    "password": "password"
+    "credentials": {
+      "username": "username",
+      "password": "password"
+    }
   }
-}
