@@ -66,7 +66,7 @@ ${GLOBAL_RETRY_INTERVAL}=    0.5s
     
 
 #Take Screenshot
-#    Wait Until Element Is Visible    preview    
+#   Wait Until Element Is Visible    preview    
 #    Click Button    preview
 #    Wait Until Element Is Visible    id:robot-preview-image    
 #    Screenshot      id:robot-preview-image    ${CURDIR}${/}output${/}currentpicture.png
@@ -91,8 +91,8 @@ ${GLOBAL_RETRY_INTERVAL}=    0.5s
 
 #Embed The Robot Screenshot To the Receipt PDF File
  #   [Arguments]    ${order}  
-  #  Open PDF    ${CURDIR}${/}output${/}receipts${/}order_${order}[Order number]_receipt.pdf
-   # Add Watermark Image To Pdf        
+ #  Open PDF    ${CURDIR}${/}output${/}receipts${/}order_${order}[Order number]_receipt.pdf
+ #  Add Watermark Image To Pdf        
     #...    image_path=${CURDIR}${/}output${/}currentpicture.png
     #...    output_path=${CURDIR}${/}output${/}receipts${/}order_${order}[Order number]_receipt.pdf
     #Close PDF  ${CURDIR}${/}output${/}receipts${/}order_${order}[Order number]_receipt.pdf
@@ -105,17 +105,17 @@ End Log
 *** Tasks ***
 Insert The Order Data And Save Receipts As PDF With Embedded Screenshots And Zip
 #Orders file: https://robotsparebinindustries.com/orders.csv
-    ${credentials}=  Get Secret Credentials    
+    ${credentials}=    Get Secret Credentials    
     ${url}=    Ask For Credentials And The Orders Download Link    ${credentials}
     #TODO: Convert To String missing implementation (Not needed?)
-    Log To Console    ${url}
     Convert To String    ${url}
-    ${orders}=    Download The Orders File    ${url}
+    Download The Orders File    ${url}
     Open The RobotSpareBin Order Website        
     Close The Annoying Modal 
-    Order Robots From RobotSpareBin Industries Inc    ${orders}
+    Order Robots From RobotSpareBin Industries Inc
     #TODO: Archive Folder With Zip missing Python implementation (Not needed?)
     Archive Folder With Zip    ${CURDIR}${/}output${/}receipts    ${CURDIR}${/}output${/}receipts.zip    
+    #TODO: Close Browser missing implementation (Not needed?)
     Close Browser
     #TODO: End Log Missing Python implementation (Not needed?)
     [Teardown]    End Log

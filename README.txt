@@ -4,6 +4,7 @@ TABLE OF CONTENTS
 
     INSTRUCTIONS
         CHECK PACKAGES IN VISUAL STUDIO CODE
+        IF USING ORIGINAL SELENIUM.WEBDRIVER
         CONFIGURE CREDENTIALS (USERNAME AND PASSWORD)
         DEFAULT USERNAME AND PASSWORD
         DOWNLOAD LINK FOR THE ORDERS FILE
@@ -32,6 +33,16 @@ INSTRUCTIONS
     
     CHECK PACKAGES IN VISUAL STUDIO CODE  
         Terminal->py -m pip list
+
+        Terminal->py -m pip install selenium
+
+        
+    IF USING ORIGINAL SELENIUM.WEBDRIVER
+
+        Set the driver in your PATH.
+
+        https://sites.google.com/chromium.org/driver/getting-started
+
 
     CONFIGURE CREDENTIALS (USERNAME AND PASSWORD)
         The vault.json file should be moved to root of the repository directory,
