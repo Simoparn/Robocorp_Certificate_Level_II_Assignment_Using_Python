@@ -29,8 +29,8 @@ class Keywordsinpython:
 
 
     def get_secret_credentials(self):
-        #Or when deployed locally: secretmanager= Secrets.FileSecrets(secret_file="vault.json") 
-        secretmanager=Secrets.RobocloudVault() 
+        secretmanager= Secrets.FileSecrets(secret_file="vault.json")
+        #secretmanager=Secrets.RobocloudVault() 
         vault=secretmanager.get_secret("Cert_II_Credentials")
         getcredentials=[]
         getcredentials.append(vault["username"])
@@ -65,9 +65,10 @@ class Keywordsinpython:
         request=HTTP()
         filemanager=FileSystem()
         #Use for personal testing if file already loaded and requests exceeded:
-        file=filemanager.read_file("./orders.csv","utf-8")
-        if not (file):
-            ordersfile=request.download(url, target_file="orders.csv", overwrite=True)
+        try:
+            file=filemanager.read_file("./orders.csv","utf-8")
+        except FileNotFoundError:
+                ordersfile=request.download(url, target_file="orders.csv", overwrite=True)
         
 
  
