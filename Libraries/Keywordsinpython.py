@@ -15,6 +15,7 @@ from RPA.Tables import Tables
 #from robot.output import logger
 #from robot.libraries.BuiltIn import logger
 #Vault libraries
+#RPA.robocorp Vault not available in VS Code extension?
 from RPA.Robocloud import Secrets
 
 global_timeout=3

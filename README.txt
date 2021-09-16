@@ -6,7 +6,7 @@ TABLE OF CONTENTS
 
         LOCAL USE
 
-            CHECK PACKAGES IN VISUAL STUDIO CODE
+            CHECK PACKAGES IN VISUAL STUDIO CODE AND LOCAL FOLDERS
             IF USING ORIGINAL SELENIUM.WEBDRIVER
             CONFIGURE VAULT CREDENTIALS (USERNAME AND PASSWORD)
             DEFAULT USERNAME AND PASSWORD
@@ -22,6 +22,7 @@ TABLE OF CONTENTS
 
     ISSUES
         POSSIBLE ISSUES WITH RPA AND SELENIUM LIBRARIES
+        PROBLEM WITH RPA.ROBOCORP.VAULT
 
 
 OVERVIEW
@@ -39,10 +40,14 @@ INSTRUCTIONS
     LOCAL USE
 
     
-        CHECK PACKAGES IN VISUAL STUDIO CODE  
+        CHECK PACKAGES IN VISUAL STUDIO CODE AND LOCAL FOLDERS
             Terminal->py -m pip list
 
-             Terminal->py -m pip install selenium
+            Terminal->py -m pip install selenium
+
+            Folders:
+
+            Users\AppData\Local\Programs\Python\Python39\Lib\site-packages
 
 
      IF USING ORIGINAL SELENIUM.WEBDRIVER
@@ -86,7 +91,8 @@ ABOUT COMMITS
 
 
 TODO
-    End Log still lacks implementation in Keywordsinpython.py
+    -End Log still lacks implementation in Keywordsinpython.py
+    -Try using Robocorp Lab for RPA.Robocorp.Vault
 
 BUGS
     (10/09/2021) Wrong number of paramters for Order Robots From RobotSpareBin Industries Industries Inc?
@@ -96,5 +102,9 @@ ISSUES
 
     POSSIBLE ISSUES WITH RPA AND SELENIUM LIBRARIES
         If the Python interpreter can't resolve the RPA and SELENIUM library in 
-        keywordsinpython.py, I recommend copying the library folder to the Lib\site-packages folder of your 
-        interpreter and reloading.   
+        keywordsinpython.py, I recommend copying the library folder to the  
+        Users\AppData\Local\Programs\Python\Python39\Lib\site-packages folder of your 
+        interpreter and reloading.
+
+    PROBLEM WITH RPA.ROBOCORP.VAULT  
+        The package wasn't found through the VS Code extension. 
