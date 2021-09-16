@@ -9,7 +9,6 @@ TABLE OF CONTENTS
             CHECK PACKAGES IN VISUAL STUDIO CODE AND LOCAL FOLDERS
             IF USING ORIGINAL SELENIUM.WEBDRIVER
             CONFIGURE VAULT CREDENTIALS (USERNAME AND PASSWORD)
-            DEFAULT USERNAME AND PASSWORD
             DOWNLOAD LINK FOR THE ORDERS FILE
 
         ROBOCORP CLOUD
@@ -32,6 +31,8 @@ OVERVIEW
     Embeds the screenshot of the robot to the PDF receipt. Creates ZIP archive of the
     receipts and the images.
 
+    Check instructions for local testing configuration.
+
 
 
 
@@ -50,7 +51,7 @@ INSTRUCTIONS
             Users\AppData\Local\Programs\Python\Python39\Lib\site-packages
 
 
-     IF USING ORIGINAL SELENIUM.WEBDRIVER
+        IF USING ORIGINAL SELENIUM.WEBDRIVER
 
             Set the driver in your PATH.
 
@@ -58,7 +59,20 @@ INSTRUCTIONS
 
 
         CONFIGURE VAULT CREDENTIALS (USERNAME AND PASSWORD)
-            The vault.json file should be moved to root of the repository directory,
+           
+           
+           https://robocorp.com/docs/development-guide/variables-and-secrets/vault
+           
+           
+           devdata/env.json
+
+            {
+            "RPA_SECRET_MANAGER": "RPA.Robocorp.Vault.FileSecrets",
+            "RPA_SECRET_FILE": "/Users/<your-username-here>/vault.json"
+            }
+           
+
+            Create a vault.json file to the root of the repository directory,
             Change the value of the RPA_SECRET_FILE attribute in devdata/env.json
             to ../vault.json for example. Change the username and password in vault.json.
         
@@ -72,9 +86,6 @@ INSTRUCTIONS
             }
         }
 
-
-        DEFAULT USERNAME AND PASSWORD
-            Username: "username", Password: "password"
     
         DOWNLOAD LINK FOR THE ORDERS FILE
             Orders file: https://robotsparebinindustries.com/orders.csv
@@ -82,7 +93,7 @@ INSTRUCTIONS
 
     ROBOCORP CLOUD
 
-        Remove the vault.json from the root directory and change the credentials according
+        Remove devdata/env.json and vault.json from the root directory and change the credentials according
         to your configured vault settings in Robocorp Cloud.
 
 ABOUT COMMITS

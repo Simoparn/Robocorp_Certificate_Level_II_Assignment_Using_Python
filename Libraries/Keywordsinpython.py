@@ -31,7 +31,7 @@ class Keywordsinpython:
 
     def get_secret_credentials(self):
         secretmanager= Secrets.FileSecrets(secret_file="vault.json")
-        #secretmanager=Secrets.RobocloudVault() 
+        #When running in Robocorp Cloud: secretmanager=Secrets.RobocloudVault() 
         vault=secretmanager.get_secret("Cert_II_Credentials")
         getcredentials=[]
         getcredentials.append(vault["username"])
