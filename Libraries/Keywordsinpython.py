@@ -11,7 +11,6 @@ from RPA.PDF import PDF
 from RPA.Archive import Archive
 from RPA.Excel.Files import Files
 from RPA.Tables import Tables
-#import csv
 #TODO: Logging library?
 #from robot.output import logger
 #from robot.libraries.BuiltIn import logger
@@ -30,7 +29,7 @@ class Keywordsinpython:
 
 
     def get_secret_credentials(self):
-        #Or Secrets.FileSecrets(secret_file="vault.json") when deployed locally
+        #Or when deployed locally: secretmanager= Secrets.FileSecrets(secret_file="vault.json") 
         secretmanager=Secrets.RobocloudVault() 
         vault=secretmanager.get_secret("Cert_II_Credentials")
         getcredentials=[]
