@@ -3,6 +3,6 @@ vault.json
 output.xml
 orders.csv
 geckodriver.log
-.\Output\Old logs and reports
-.\Output\currentpicture
-.\Output\receipts.zip
+Output/Old logs and reports
+Output/currentpicture
+Output/receipts.zip
