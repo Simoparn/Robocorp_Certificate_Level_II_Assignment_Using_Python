@@ -16,11 +16,14 @@ Library         RPA.Robocloud.Secrets
 Library         RPA.Dialogs
 #Own libraries
 Library         Keywordsinpython  
+Library    DateTime
+Library    String
 
 *** Variables ***
 ${GLOBAL_RETRY_AMOUNT}=    4x
 ${GLOBAL_RETRY_INTERVAL}=    0.5s
-
+${whitespace}    ${SPACE}
+${underscore}    _
 
 *** Keywords ***
 #SEE .\KEYWORDSINPYTHON.PY
@@ -97,10 +100,14 @@ ${GLOBAL_RETRY_INTERVAL}=    0.5s
     #...    output_path=${CURDIR}${/}output${/}receipts${/}order_${order}[Order number]_receipt.pdf
     #Close PDF  ${CURDIR}${/}output${/}receipts${/}order_${order}[Order number]_receipt.pdf
 
+
+    
 End Log
-        Log  Done.    
-
-
+    [Arguments]    ${logandreportdate}
+    Log  Done.    
+    Copy File    ${CURDIR}${/}log.html    ${CURDIR}${/}output${/}Logs and reports${/}log_${logandreportdate}.html
+    Copy File    ${CURDIR}${/}report.html    ${CURDIR}${/}output${/}Logs and reports${/}report_${logandreportdate}.html          
+    
 
 *** Tasks ***
 Insert The Order Data And Save Receipts As PDF With Embedded Screenshots And Zip
@@ -118,4 +125,6 @@ Insert The Order Data And Save Receipts As PDF With Embedded Screenshots And Zip
     #TODO: Close Browser missing implementation (Not needed?)
     Close Browser
     #TODO: End Log Missing Python implementation (Not needed?)
-    [Teardown]    End Log
+    Show Modal Click Attempts
+    ${logandreportdate}=    Create Log And Report Timestamp
+    [Teardown]    End Log    ${logandreportdate}

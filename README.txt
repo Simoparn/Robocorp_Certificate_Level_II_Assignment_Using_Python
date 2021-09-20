@@ -80,7 +80,7 @@ INSTRUCTIONS
 
 
             {
-                "credentials": {
+                "Cert_II_Credentials": {
                 "username": "username",
                 "password": "password"
             }

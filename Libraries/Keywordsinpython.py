@@ -1,5 +1,6 @@
 
 #Browser and UI libraries
+from logging import log
 from RPA.HTTP import HTTP
 from RPA.Dialogs import Dialogs 
 from RPA.Browser.Selenium import Selenium
@@ -11,7 +12,9 @@ from RPA.PDF import PDF
 from RPA.Archive import Archive
 from RPA.Excel.Files import Files
 from RPA.Tables import Tables
-#TODO: Logging library?
+from robot.libraries import DateTime
+from robot.libraries import String
+#Logging libraries
 #from robot.output import logger
 #from robot.libraries.BuiltIn import logger
 #Vault libraries
@@ -19,6 +22,7 @@ from RPA.Tables import Tables
 from RPA.Robocloud import Secrets
 
 global_timeout=3
+
 
 browser=Selenium()
 pdf=PDF()
@@ -28,10 +32,11 @@ pdf=PDF()
 
 class Keywordsinpython:
 
+    modal_click_attempts=0
 
     def get_secret_credentials(self):
-        #When running locally: secretmanager= Secrets.FileSecrets(secret_file="vault.json")
-        secretmanager=Secrets.RobocloudVault() 
+        secretmanager= Secrets.FileSecrets(secret_file="vault.json")
+        #secretmanager=Secrets.RobocloudVault() 
         vault=secretmanager.get_secret("Cert_II_Credentials")
         getcredentials=[]
         getcredentials.append(vault["username"])
@@ -44,11 +49,11 @@ class Keywordsinpython:
         rightcredentials=False
         while not(rightcredentials):
             #Add heading  (self, heading: str, size: Size = Size.Medium,)
-            dialog.add_heading("Robocorp Certificate II using Python, Simo P.")    
+            dialog.add_heading("Robocorp Certificate II using Python, Simo P. (https://robotsparebinindustries.com/#/)")    
             #Add input      (self, name: str, label: Optional[str] = None, placeholder: Optional[str] = None, rows: Optional[int] = None,)
             dialog.add_text_input("Username", "Enter username")
             dialog.add_text_input("Password", "Enter password")
-            dialog.add_text_input("Url", "Enter the orders URL here")
+            dialog.add_text_input("Url", "Enter the orders URL here (https://robotsparebinindustries.com/orders.csv)")
             #Add submit buttons
             dialog.add_submit_buttons("Press here to download the orders file")
             #Run the dialog (self, timeout: int = 180, **options: Any)
@@ -83,23 +88,24 @@ class Keywordsinpython:
         try:
             browser.wait_until_element_is_visible("class:btn.btn-danger", timeout=1)
             browser.click_button("class:btn.btn-danger")
+            
+
         except:
             pass
+            
     
     
     def fill_the_order_for_one_person(self, order):
 
         #IF/ELSE-structure is recommended by Robot Framework documentation (see robot.libraries.BuiltIn) instead of run_keyword_if()
-        #This is needed with Python for the page to load properly before checking for the modal
-        #TODO: use is_displayed() instead?
         
+        #use is_displayed() instead, when importing selenium.webdriver
         #modalbutton=webdriverchrome.find_element_by_class_name("class:btn.btn-danger")
         #if(modalbutton.is_displayed()):
         #    self.close_the_annoying_modal()
         
-        #if(browser.is_element_visible("class:btn.btn-danger", missing_ok=True)):
         self.close_the_annoying_modal() 
-        #else:
+
         head_as_string= order["Head"]
         browser.select_from_list_by_value("head", head_as_string)
         browser.select_radio_button("body", order["Body"])
@@ -109,6 +115,9 @@ class Keywordsinpython:
         
         while not(browser.is_element_visible("receipt", missing_ok=True)):
             browser.click_button("order")
+            self.modal_click_attempts+=1
+            
+            
         
     
 
@@ -146,10 +155,7 @@ class Keywordsinpython:
         for order in orders:
          if(order):            
             self.fill_the_order_for_one_person(order) 
-            #try:
             self.save_receipt_as_PDF(order)
-            #except TypeError:
-            #    logger.console(ErrorDetails)
             browser.wait_until_element_is_visible("id:order-another", global_timeout)
             browser.click_button("id:order-another")
              
@@ -169,8 +175,23 @@ class Keywordsinpython:
         receiptfilewithimage.add_watermark_image_to_pdf(image_path="./output/currentpicture.png",output_path="./output/receipts/order_"+order["Order number"]+"_receipt.pdf")
         receiptfilewithimage.close_pdf("./output/receipts/order_"+order["Order number"]+"_receipt.pdf")
       
-              
+
+    def show_modal_click_attempts(self):
+        dialog=Dialogs()
+        self.modal_click_attempts
+        dialog.add_heading("Receipts saved. "+str(self.modal_click_attempts)+" modal click attempts in total.") 
+        dialog.add_submit_buttons("Press here to end the program.")
+        dialog.run_dialog()    
+
+    def create_log_and_report_timestamp(self):
+        logandreportdate=DateTime.get_current_date(result_format="%Y-%m-%d%H-%M-%S")
+        logandreportdate=logandreportdate.replace(" ","_")
+        return logandreportdate
+
    #TODO: implementation for Archive Folders With Zip missing. (Unnecessary?)
+
+
+ 
 
 
 
