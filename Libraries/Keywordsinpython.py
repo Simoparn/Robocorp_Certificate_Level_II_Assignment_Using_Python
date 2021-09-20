@@ -35,8 +35,8 @@ class Keywordsinpython:
     modal_click_attempts=0
 
     def get_secret_credentials(self):
-        secretmanager= Secrets.FileSecrets(secret_file="vault.json")
-        #secretmanager=Secrets.RobocloudVault() 
+        #When deploying locally: secretmanager= Secrets.FileSecrets(secret_file="vault.json")
+        secretmanager=Secrets.RobocloudVault() 
         vault=secretmanager.get_secret("Cert_II_Credentials")
         getcredentials=[]
         getcredentials.append(vault["username"])
