@@ -184,7 +184,7 @@ class Keywordsinpython:
         dialog.run_dialog()    
 
     def create_log_and_report_timestamp(self):
-        logandreportdate=DateTime.get_current_date(result_format="%Y-%m-%d%H-%M-%S")
+        logandreportdate=DateTime.get_current_date(result_format="%Y-%m-%d-%H-%M-%S")
         logandreportdate=logandreportdate.replace(" ","_")
         return logandreportdate
 
